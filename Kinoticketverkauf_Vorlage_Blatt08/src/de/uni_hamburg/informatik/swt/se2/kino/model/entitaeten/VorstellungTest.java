@@ -1,5 +1,14 @@
 package de.uni_hamburg.informatik.swt.se2.kino.model.entitaeten;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,15 +16,6 @@ import de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte.Datum;
 import de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte.FSK;
 import de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte.Platz;
 import de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte.Uhrzeit;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
 
 public class VorstellungTest
 {

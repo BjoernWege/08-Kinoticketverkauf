@@ -1,16 +1,16 @@
 package de.uni_hamburg.informatik.swt.se2.kino.ui.platzverkauf;
 
-import javax.swing.JButton;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
-
-import de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte.Platz;
-
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.Rectangle;
+
+import javax.swing.JButton;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+
+import de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte.Platz;
 
 /**
  * Ein Button, mit dem ein Sitzplatz in der Benutzeroberfläche dargestellt wird.

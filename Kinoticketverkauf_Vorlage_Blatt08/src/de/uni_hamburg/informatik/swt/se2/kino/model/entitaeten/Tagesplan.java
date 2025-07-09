@@ -21,14 +21,16 @@ public class Tagesplan
 
     // Der Comparator wird zur Sortierung der Vorstellungen innerhalb eines
     // Tagesplans verwendet.
-    private static Comparator<Vorstellung> _vergleichNachAnfangszeit = (v1, v2) -> {
+    private static Comparator<Vorstellung> _vergleichNachAnfangszeit = (v1,
+            v2) -> {
         assert v1 != null : "Vorbedingung verletzt: v1 != null";
         assert v2 != null : "Vorbedingung verletzt: v2 != null";
 
         // Der Vergleich der Anfangszeiten reicht hier aus, weil in
         // einem Tagesplan sowieso nur Vorstellungen mit gleichem Datum
         // laufen.
-        return v1.getAnfangszeit().compareTo(v2.getAnfangszeit());
+        return v1.getAnfangszeit()
+            .compareTo(v2.getAnfangszeit());
     };
 
     /**
@@ -69,7 +71,8 @@ public class Tagesplan
     public void fuegeVorstellungHinzu(Vorstellung v)
     {
         assert v != null : "Vorbedingung verletzt: v != null";
-        assert v.getDatum().equals(_tag) : "Vorbedingung verletzt: v.getDatum().equals(_tag)";
+        assert v.getDatum()
+            .equals(_tag) : "Vorbedingung verletzt: v.getDatum().equals(_tag)";
 
         _vorstellungen.add(v);
     }

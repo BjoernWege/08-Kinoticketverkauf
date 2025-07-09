@@ -6,7 +6,8 @@ package de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte;
  * @author SE2-Team
  * @version SoSe 2024
  */
-public final class Uhrzeit implements Comparable<Uhrzeit> {
+public final class Uhrzeit implements Comparable<Uhrzeit>
+{
     private static final int MINUTEN_PRO_TAG = 24 * 60;
 
     private final int _stunden;
@@ -22,8 +23,10 @@ public final class Uhrzeit implements Comparable<Uhrzeit> {
      * @ensure getStunden() == stunden
      * @ensure getMinuten() == minuten
      */
-    public static Uhrzeit get(int stunden, int minuten) {
-        assert istGueltig(stunden, minuten) : "Vorbedingung verletzt: istGueltig(stunden, minuten)";
+    public static Uhrzeit get(int stunden, int minuten)
+    {
+        assert istGueltig(stunden,
+                minuten) : "Vorbedingung verletzt: istGueltig(stunden, minuten)";
 
         return new Uhrzeit(stunden, minuten);
     }
@@ -34,11 +37,14 @@ public final class Uhrzeit implements Comparable<Uhrzeit> {
      * 
      * @return true, wenn Uhrzeit gültig, sonst false
      */
-    public static boolean istGueltig(int stunden, int minuten) {
-        return (stunden >= 0) && (stunden < 24) && (minuten >= 0) && (minuten < 60);
+    public static boolean istGueltig(int stunden, int minuten)
+    {
+        return (stunden >= 0) && (stunden < 24) && (minuten >= 0)
+                && (minuten < 60);
     }
 
-    private Uhrzeit(int stunden, int minuten) {
+    private Uhrzeit(int stunden, int minuten)
+    {
         _stunden = stunden;
         _minuten = minuten;
     }
@@ -50,7 +56,8 @@ public final class Uhrzeit implements Comparable<Uhrzeit> {
      * 
      * @ensure (result >= 0) && (result < 24)
      */
-    public int getStunden() {
+    public int getStunden()
+    {
         return _stunden;
     }
 
@@ -61,7 +68,8 @@ public final class Uhrzeit implements Comparable<Uhrzeit> {
      * 
      * @ensure (result >= 0) && (result < 60)
      */
-    public int getMinuten() {
+    public int getMinuten()
+    {
         return _minuten;
     }
 
@@ -78,22 +86,27 @@ public final class Uhrzeit implements Comparable<Uhrzeit> {
      * @require start != null
      * @ensure result >= 0
      */
-    public int minutenSeit(Uhrzeit start) {
+    public int minutenSeit(Uhrzeit start)
+    {
         assert start != null : "Vorbedingung verletzt: start != null";
 
-        int differenz = this.minutenSeitMitternacht() - start.minutenSeitMitternacht();
-        if (differenz < 0) {
+        int differenz = this.minutenSeitMitternacht()
+                - start.minutenSeitMitternacht();
+        if (differenz < 0)
+        {
             differenz += MINUTEN_PRO_TAG;
         }
         return differenz;
     }
 
-    private int minutenSeitMitternacht() {
+    private int minutenSeitMitternacht()
+    {
         return _stunden * 60 + _minuten;
     }
 
     @Override
-    public int compareTo(Uhrzeit u) {
+    public int compareTo(Uhrzeit u)
+    {
         return this.minutenSeitMitternacht() - u.minutenSeitMitternacht();
     }
 
@@ -102,21 +115,26 @@ public final class Uhrzeit implements Comparable<Uhrzeit> {
      * Uhrzeiten sind gleich, wenn ihre Stunden und Minuten übereinstimmen.
      */
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         return (o instanceof Uhrzeit) && equals((Uhrzeit) o);
     }
 
-    private boolean equals(Uhrzeit andereUhrzeit) {
-        return (_stunden == andereUhrzeit._stunden) && (_minuten == andereUhrzeit._minuten);
+    private boolean equals(Uhrzeit andereUhrzeit)
+    {
+        return (_stunden == andereUhrzeit._stunden)
+                && (_minuten == andereUhrzeit._minuten);
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return minutenSeitMitternacht();
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return getFormatiertenString();
     }
 
@@ -127,7 +145,8 @@ public final class Uhrzeit implements Comparable<Uhrzeit> {
      * 
      * @ensure result != null
      */
-    public String getFormatiertenString() {
+    public String getFormatiertenString()
+    {
         return String.format("%02d:%02d", _stunden, _minuten);
     }
 }

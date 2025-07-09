@@ -66,10 +66,11 @@ public class KassenController
      */
     private void erzeugeListenerFuerSubmodule()
     {
-        _datumAuswaehlController.registriereBeobachter(this::setzeTagesplanFuerAusgewaehltesDatum);
+        _datumAuswaehlController
+            .registriereBeobachter(this::setzeTagesplanFuerAusgewaehltesDatum);
 
         _vorstellungAuswaehlController
-                .registriereBeobachter(this::setzeAusgewaehlteVorstellung);
+            .registriereBeobachter(this::setzeAusgewaehlteVorstellung);
     }
 
     /**
@@ -77,7 +78,8 @@ public class KassenController
      */
     private void registriereUIAktionen()
     {
-        _view.getBeendenButton().addActionListener(e -> reagiereAufBeendenButton());
+        _view.getBeendenButton()
+            .addActionListener(e -> reagiereAufBeendenButton());
     }
 
     /**

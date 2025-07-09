@@ -1,11 +1,12 @@
 package de.uni_hamburg.informatik.swt.se2.kino.ui.vorstellungsauswaehler;
 
+import java.util.List;
+
+import javax.swing.JPanel;
+
 import de.uni_hamburg.informatik.swt.se2.kino.model.entitaeten.Tagesplan;
 import de.uni_hamburg.informatik.swt.se2.kino.model.entitaeten.Vorstellung;
 import de.uni_hamburg.informatik.swt.se2.kino.ui.ObservableSubmodul;
-
-import javax.swing.JPanel;
-import java.util.List;
 
 /**
  * Mit diesem UI-Modul kann der Benutzer oder die Benutzerin eine Vorstellung
@@ -56,7 +57,7 @@ public class VorstellungsAuswaehlController extends ObservableSubmodul
     {
         Vorstellung result = null;
         VorstellungsFormatierer adapter = _view.getVorstellungAuswahlList()
-                .getSelectedValue();
+            .getSelectedValue();
         if (adapter != null)
         {
             result = adapter.getVorstellung();
@@ -85,13 +86,15 @@ public class VorstellungsAuswaehlController extends ObservableSubmodul
             List<Vorstellung> vorstellungen)
     {
         VorstellungsFormatierer[] varray = new VorstellungsFormatierer[vorstellungen
-                .size()];
+            .size()];
         for (int i = 0; i < vorstellungen.size(); i++)
         {
             varray[i] = new VorstellungsFormatierer(vorstellungen.get(i));
         }
-        _view.getVorstellungAuswahlList().setListData(varray);
-        _view.getVorstellungAuswahlList().setSelectedIndex(0);
+        _view.getVorstellungAuswahlList()
+            .setListData(varray);
+        _view.getVorstellungAuswahlList()
+            .setSelectedIndex(0);
     }
 
     /**
@@ -101,12 +104,12 @@ public class VorstellungsAuswaehlController extends ObservableSubmodul
      */
     private void registriereUIAktionen()
     {
-        _view.getVorstellungAuswahlList().addListSelectionListener(
-                event -> {
-                    if (!event.getValueIsAdjusting())
-                    {
-                        vorstellungWurdeAusgewaehlt();
-                    }
-                });
+        _view.getVorstellungAuswahlList()
+            .addListSelectionListener(event -> {
+                if (!event.getValueIsAdjusting())
+                {
+                    vorstellungWurdeAusgewaehlt();
+                }
+            });
     }
 }
