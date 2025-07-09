@@ -32,7 +32,7 @@ class PlatzSelectionEvent extends EventObject
         super(source);
         _ausgewaehltePlaetze = new HashSet<>(ausgewaehltePlaetze);
     }
-    
+
     /**
      * Gibt die Menge der nach diesem Ereignis ausgewählten Plätze zurück.
      */
@@ -40,7 +40,7 @@ class PlatzSelectionEvent extends EventObject
     {
         return _ausgewaehltePlaetze;
     }
-    
+
     @Override
     public String toString()
     {

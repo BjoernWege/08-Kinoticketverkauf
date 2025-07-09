@@ -13,7 +13,8 @@ import java.util.TimeZone;
  * @author SE2-Team
  * @version SoSe 2024
  */
-public final class Datum implements Comparable<Datum> {
+public final class Datum implements Comparable<Datum>
+{
     /*
      * WICHTIGER HINWEIS AN DIE STUDIERENDEN
      * 
@@ -38,7 +39,8 @@ public final class Datum implements Comparable<Datum> {
 
     // Statische Initialisierungsblöcke dienen der Initialisierung von
     // Klassenvariablen.
-    static {
+    static
+    {
         kalender.setLenient(false);
         kalender.setTimeZone(TimeZone.getTimeZone("GMT"));
     }
@@ -58,13 +60,16 @@ public final class Datum implements Comparable<Datum> {
      * @ensure getMonat() == monat
      * @ensure getJahr() == jahr
      */
-    public static Datum get(int tag, int monat, int jahr) {
-        assert istGueltig(tag, monat, jahr) : "Vorbedingung verletzt: istGueltig(tag, monat, jahr)";
+    public static Datum get(int tag, int monat, int jahr)
+    {
+        assert istGueltig(tag, monat,
+                jahr) : "Vorbedingung verletzt: istGueltig(tag, monat, jahr)";
 
         return new Datum(tag, monat, jahr);
     }
 
-    private Datum(int tag, int monat, int jahr) {
+    private Datum(int tag, int monat, int jahr)
+    {
         _tag = tag;
         _monat = monat;
         _jahr = jahr;
@@ -75,8 +80,10 @@ public final class Datum implements Comparable<Datum> {
      * 
      * @return das heutige Datum
      */
-    public static Datum heute() {
-        synchronized (kalender) {
+    public static Datum heute()
+    {
+        synchronized (kalender)
+        {
             kalender.clear();
             kalender.setTimeInMillis(System.currentTimeMillis());
 
@@ -84,7 +91,8 @@ public final class Datum implements Comparable<Datum> {
         }
     }
 
-    private static Datum aktuellesDatumDesKalenders() {
+    private static Datum aktuellesDatumDesKalenders()
+    {
         int tag = kalender.get(Calendar.DAY_OF_MONTH);
         int monat = kalender.get(Calendar.MONTH) + 1;
         int jahr = kalender.get(Calendar.YEAR);
@@ -102,21 +110,26 @@ public final class Datum implements Comparable<Datum> {
      * @return true wenn drei übergebene Zahlen ein gültiges Datum ergeben,
      *         ansonsten false.
      */
-    public static boolean istGueltig(int tag, int monat, int jahr) {
+    public static boolean istGueltig(int tag, int monat, int jahr)
+    {
         return istGueltigerMonat(monat) && istGueltigerTag(tag, monat, jahr);
     }
 
-    private static boolean istGueltigerMonat(int monat) {
+    private static boolean istGueltigerMonat(int monat)
+    {
         return (monat >= 1) && (monat <= 12);
     }
 
-    private static boolean istGueltigerTag(int tag, int monat, int jahr) {
-        synchronized (kalender) {
+    private static boolean istGueltigerTag(int tag, int monat, int jahr)
+    {
+        synchronized (kalender)
+        {
             kalender.clear();
             kalender.set(Calendar.YEAR, jahr);
             kalender.set(Calendar.MONTH, monat - 1);
 
-            return (tag >= 1) && (tag <= kalender.getActualMaximum(Calendar.DAY_OF_MONTH));
+            return (tag >= 1) && (tag <= kalender
+                .getActualMaximum(Calendar.DAY_OF_MONTH));
         }
     }
 
@@ -128,8 +141,10 @@ public final class Datum implements Comparable<Datum> {
      * 
      * @return den Tag, der um die angegebene Anzahl Tage nach diesem Tag liegt.
      */
-    public Datum plus(int tage) {
-        synchronized (kalender) {
+    public Datum plus(int tage)
+    {
+        synchronized (kalender)
+        {
             kalender.clear();
             kalender.set(_jahr, _monat - 1, _tag);
             kalender.add(Calendar.DAY_OF_MONTH, tage);
@@ -146,7 +161,8 @@ public final class Datum implements Comparable<Datum> {
      * 
      * @return den Tag, der um die angegebene Anzahl Tage vor diesem Tag liegt.
      */
-    public Datum minus(int tage) {
+    public Datum minus(int tage)
+    {
         return plus(-tage);
     }
 
@@ -157,7 +173,8 @@ public final class Datum implements Comparable<Datum> {
      * 
      * @return den Tag vor diesem Tag.
      */
-    public Datum vorherigerTag() {
+    public Datum vorherigerTag()
+    {
         return this.minus(1);
     }
 
@@ -168,7 +185,8 @@ public final class Datum implements Comparable<Datum> {
      * 
      * @return den Tag nach diesem Tag.
      */
-    public Datum naechsterTag() {
+    public Datum naechsterTag()
+    {
         return this.plus(1);
     }
 
@@ -182,7 +200,8 @@ public final class Datum implements Comparable<Datum> {
      * 
      * @require start != null
      */
-    public int tageSeit(Datum start) {
+    public int tageSeit(Datum start)
+    {
         assert start != null : "Vorbedingung verletzt: start != null";
 
         long millisekunden = this.inMillisekunden() - start.inMillisekunden();
@@ -191,8 +210,10 @@ public final class Datum implements Comparable<Datum> {
         return (int) tage;
     }
 
-    private long inMillisekunden() {
-        synchronized (kalender) {
+    private long inMillisekunden()
+    {
+        synchronized (kalender)
+        {
             kalender.clear();
             kalender.set(_jahr, _monat - 1, _tag);
 
@@ -201,21 +222,26 @@ public final class Datum implements Comparable<Datum> {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         return (o instanceof Datum) && equals((Datum) o);
     }
 
-    private boolean equals(Datum anderesDatum) {
-        return (_tag == anderesDatum._tag) && (_monat == anderesDatum._monat) && (_jahr == anderesDatum._jahr);
+    private boolean equals(Datum anderesDatum)
+    {
+        return (_tag == anderesDatum._tag) && (_monat == anderesDatum._monat)
+                && (_jahr == anderesDatum._jahr);
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return _jahr * 366 + _monat * 31 + _tag;
     }
 
     @Override
-    public int compareTo(Datum anderesDatum) {
+    public int compareTo(Datum anderesDatum)
+    {
         return tageSeit(anderesDatum);
     }
 
@@ -224,7 +250,8 @@ public final class Datum implements Comparable<Datum> {
      * 
      * @return Das Datum als formatierten String
      */
-    public String getFormatiertenString() {
+    public String getFormatiertenString()
+    {
         return String.format("%02d.%02d.%4d", _tag, _monat, _jahr);
     }
 
@@ -233,7 +260,8 @@ public final class Datum implements Comparable<Datum> {
      * 
      * @return das Jahr des Datums
      */
-    public int getJahr() {
+    public int getJahr()
+    {
         return _jahr;
     }
 
@@ -242,7 +270,8 @@ public final class Datum implements Comparable<Datum> {
      * 
      * @return der Monat des Datums
      */
-    public int getMonat() {
+    public int getMonat()
+    {
         return _monat;
     }
 
@@ -251,7 +280,8 @@ public final class Datum implements Comparable<Datum> {
      * 
      * @return der Tag des Datums
      */
-    public int getTag() {
+    public int getTag()
+    {
         return _tag;
     }
 }

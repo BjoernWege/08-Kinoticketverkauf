@@ -1,9 +1,9 @@
 package de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+
+import org.junit.Test;
 
 public class PlatzTest
 {

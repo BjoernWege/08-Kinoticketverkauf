@@ -53,10 +53,12 @@ public class Kino
         {
             assert vorstellung != null : "Vorbedingung verletzt: vorstellungen enthaelt keine Nullpointer";
             Kinosaal saal = vorstellung.getKinosaal();
-            assert _kinosaele.contains(saal) : "Vorbedingung verletzt: alle Vorstellungen laufen in uebergebenen Kinosaelen";
+            assert _kinosaele.contains(
+                    saal) : "Vorbedingung verletzt: alle Vorstellungen laufen in uebergebenen Kinosaelen";
 
             Datum datum = vorstellung.getDatum();
-            Tagesplan tagesplan = _tagesplaene.computeIfAbsent(datum, k -> new Tagesplan(datum));
+            Tagesplan tagesplan = _tagesplaene.computeIfAbsent(datum,
+                    k -> new Tagesplan(datum));
             tagesplan.fuegeVorstellungHinzu(vorstellung);
         }
     }

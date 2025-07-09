@@ -1,14 +1,15 @@
 package de.uni_hamburg.informatik.swt.se2.kino.ui.datumsauswaehler;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 
 /**
  * Die GUI des {@link DatumAuswaehlController}.
@@ -44,8 +45,8 @@ class DatumAuswaehlView
 
         _datumLabel = new JLabel(startDatumString, SwingConstants.CENTER);
 
-        GridBagConstraints constraints = new GridBagConstraints(0, 0, 2, 1,
-                1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+        GridBagConstraints constraints = new GridBagConstraints(0, 0, 2, 1, 1.0,
+                0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(2, 0, 2, 0), 0, 0);
         panel.add(_datumLabel, constraints);
 

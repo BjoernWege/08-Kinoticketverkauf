@@ -34,8 +34,11 @@ class VorstellungsFormatierer
     @Override
     public String toString()
     {
-        return _vorstellung.getAnfangszeit().getFormatiertenString() + " - "
-                + _vorstellung.getFilm().getFormatiertenString() + ", "
-                + _vorstellung.getKinosaal().getName();
+        return _vorstellung.getAnfangszeit()
+            .getFormatiertenString() + " - "
+                + _vorstellung.getFilm()
+                    .getFormatiertenString()
+                + ", " + _vorstellung.getKinosaal()
+                    .getName();
     }
 }

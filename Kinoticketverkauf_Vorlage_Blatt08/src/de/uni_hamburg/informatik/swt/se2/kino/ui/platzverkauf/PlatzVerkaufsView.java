@@ -1,12 +1,13 @@
 package de.uni_hamburg.informatik.swt.se2.kino.ui.platzverkauf;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
 /**
  * Die UI des {@link PlatzVerkaufsController}.
@@ -22,7 +23,7 @@ class PlatzVerkaufsView
     private JButton _verkaufenButton;
     private JButton _stornierenButton;
     private JPlatzplan _platzplan;
-   
+
     /**
      * Initialisiert die UI.
      */
@@ -41,28 +42,28 @@ class PlatzVerkaufsView
         panel.setLayout(new BorderLayout());
         _platzplan = new JPlatzplan();
         panel.add(new JScrollPane(_platzplan), BorderLayout.CENTER);
-        
+
         JPanel southPanel = new JPanel(new BorderLayout());
-        southPanel.setBorder(BorderFactory.createEmptyBorder(5,10,5,0));
-        
+        southPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
+
         JPanel preisPanel = new JPanel(new BorderLayout());
         _preisLabel = new JLabel();
         preisPanel.add(_preisLabel, BorderLayout.CENTER);
-        
+
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         _verkaufenButton = new JButton("Verkaufen");
-        buttonPanel.add(_verkaufenButton);    
+        buttonPanel.add(_verkaufenButton);
         _stornierenButton = new JButton("Stornieren");
         buttonPanel.add(_stornierenButton);
-        
+
         southPanel.add(_preisLabel, BorderLayout.CENTER);
         southPanel.add(buttonPanel, BorderLayout.EAST);
-        
+
         panel.add(southPanel, BorderLayout.SOUTH);
-        
+
         return panel;
     }
-    
+
     /**
      * Gibt den Platzplan zurück.
      */
@@ -70,7 +71,7 @@ class PlatzVerkaufsView
     {
         return _platzplan;
     }
-    
+
     /**
      * Gibt das Label für die Preisanzeige zurück.
      */
@@ -78,7 +79,7 @@ class PlatzVerkaufsView
     {
         return _preisLabel;
     }
-    
+
     /**
      * Gibt den Stornieren-Button zurück.
      */
@@ -86,7 +87,7 @@ class PlatzVerkaufsView
     {
         return _stornierenButton;
     }
-    
+
     /**
      * Gibt den Verkaufen-Button zurück.
      */
@@ -94,7 +95,7 @@ class PlatzVerkaufsView
     {
         return _verkaufenButton;
     }
-    
+
     /**
      * Gibt das Panel zurück, in dem die Widgets angeordnet sind.
      */

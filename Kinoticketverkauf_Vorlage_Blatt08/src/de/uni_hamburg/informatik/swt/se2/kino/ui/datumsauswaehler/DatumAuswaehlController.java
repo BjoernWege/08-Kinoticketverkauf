@@ -1,9 +1,9 @@
 package de.uni_hamburg.informatik.swt.se2.kino.ui.datumsauswaehler;
 
+import javax.swing.JPanel;
+
 import de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte.Datum;
 import de.uni_hamburg.informatik.swt.se2.kino.ui.ObservableSubmodul;
-
-import javax.swing.JPanel;
 
 /**
  * Mit diesem UI-Modul kann ein Datum ausgewählt werden.
@@ -38,7 +38,7 @@ public class DatumAuswaehlController extends ObservableSubmodul
     {
         _ausgewaehltesDatum = _ausgewaehltesDatum.vorherigerTag();
         _view.getDatumLabel()
-                .setText(_ausgewaehltesDatum.getFormatiertenString());
+            .setText(_ausgewaehltesDatum.getFormatiertenString());
         informiereUeberAenderung();
     }
 
@@ -49,7 +49,7 @@ public class DatumAuswaehlController extends ObservableSubmodul
     {
         _ausgewaehltesDatum = _ausgewaehltesDatum.naechsterTag();
         _view.getDatumLabel()
-                .setText(_ausgewaehltesDatum.getFormatiertenString());
+            .setText(_ausgewaehltesDatum.getFormatiertenString());
         informiereUeberAenderung();
     }
 
@@ -80,8 +80,10 @@ public class DatumAuswaehlController extends ObservableSubmodul
      */
     private void registriereUIAktionen()
     {
-        _view.getZurueckButton().addActionListener(e -> zurueckButtonWurdeGedrueckt());
+        _view.getZurueckButton()
+            .addActionListener(e -> zurueckButtonWurdeGedrueckt());
 
-        _view.getWeiterButton().addActionListener(e -> weiterButtonWurdeGedrueckt());
+        _view.getWeiterButton()
+            .addActionListener(e -> weiterButtonWurdeGedrueckt());
     }
 }
