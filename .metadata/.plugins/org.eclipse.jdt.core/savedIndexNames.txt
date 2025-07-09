@@ -1,0 +1,6 @@
+INDEX VERSION 1.134+D:\Infhome\SE2\08 Kinoticketverkauf\.metadata\.plugins\org.eclipse.jdt.core
+4059041577.index
+3959467307.index
+1865797976.index
+876646026.index
+3482211669.index
