@@ -1,12 +1,12 @@
 package de.uni_hamburg.informatik.swt.se2.kino.model.entitaeten;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
 import de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte.FSK;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class FilmTest
 {

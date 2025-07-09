@@ -1,8 +1,8 @@
 package de.uni_hamburg.informatik.swt.se2.kino.startup;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
+
+import static org.junit.Assert.fail;
 
 /**
  * Diese Klasse dient dazu, zu testen, ob in Eclipse die Assertions aktiviert

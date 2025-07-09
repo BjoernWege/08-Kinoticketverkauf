@@ -1,13 +1,12 @@
 package de.uni_hamburg.informatik.swt.se2.kino.ui.vorstellungsauswaehler;
 
-import java.awt.BorderLayout;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import java.awt.BorderLayout;
 
 /**
  * Die UI des {@link VorstellungsAuswaehlController}.
@@ -38,12 +37,11 @@ class VorstellungsAuswaehlView
         panel.setLayout(new BorderLayout(0, 4));
         panel.add(new JLabel("Vorstellung:"), BorderLayout.NORTH);
         _vorstellungAuswahlList = new JList<VorstellungsFormatierer>();
+        _vorstellungAuswahlList.setBorder(BorderFactory.createEmptyBorder(2, 2,
+                2, 2));
         _vorstellungAuswahlList
-            .setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-        _vorstellungAuswahlList
-            .setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        panel.add(new JScrollPane(_vorstellungAuswahlList),
-                BorderLayout.CENTER);
+                .setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        panel.add(new JScrollPane(_vorstellungAuswahlList), BorderLayout.CENTER);
         return panel;
     }
 

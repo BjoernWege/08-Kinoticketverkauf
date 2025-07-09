@@ -112,10 +112,9 @@ public class Kinosaal
     public boolean hatPlatz(Platz platz)
     {
         assert platz != null : "Vorbedingung verletzt: platz != null";
-
+        
         return ((platz.getReihe() >= 0) && (platz.getReihe() < _anzahlReihen))
-                && ((platz.getSitz() >= 0)
-                        && (platz.getSitz() < _anzahlSitzeProReihe));
+                && ((platz.getSitz() >= 0) && (platz.getSitz() < _anzahlSitzeProReihe));
     }
 
     @Override
@@ -128,7 +127,7 @@ public class Kinosaal
             result = getName().equals(saal.getName())
                     && getAnzahlReihen() == saal.getAnzahlReihen()
                     && getAnzahlSitzeProReihe() == saal
-                        .getAnzahlSitzeProReihe();
+                            .getAnzahlSitzeProReihe();
         }
         return result;
     }

@@ -1,10 +1,5 @@
 package de.uni_hamburg.informatik.swt.se2.kino.ui.kasse;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -13,6 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingConstants;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
 
 /**
  * Das UI des {@link KassenController}.
@@ -38,13 +37,12 @@ class KassenView
      * Initialisert die Oberfläche. Die Parameter sind die UIs der Submodule,
      * die eingebettet werden.
      */
-    public KassenView(JPanel platzVerkaufsPanel, JPanel datumAuswaehlPanel,
-            JPanel vorstellungAuswaehlPanel)
+    public KassenView(JPanel platzVerkaufsPanel,
+            JPanel datumAuswaehlPanel, JPanel vorstellungAuswaehlPanel)
     {
         _frame = new JFrame(TITEL);
         _frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        _frame.getContentPane()
-            .setLayout(new BorderLayout());
+        _frame.getContentPane().setLayout(new BorderLayout());
 
         JComponent topPanel = erstelleUeberschriftPanel();
         JComponent leftPanel = erstelleVorstellungsauswahlPanel(
@@ -54,12 +52,9 @@ class KassenView
 
         JSplitPane splitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 leftPanel, rightPanel);
-        _frame.getContentPane()
-            .add(splitter, BorderLayout.CENTER);
-        _frame.getContentPane()
-            .add(topPanel, BorderLayout.NORTH);
-        _frame.getContentPane()
-            .add(bottomPanel, BorderLayout.SOUTH);
+        _frame.getContentPane().add(splitter, BorderLayout.CENTER);
+        _frame.getContentPane().add(topPanel, BorderLayout.NORTH);
+        _frame.getContentPane().add(bottomPanel, BorderLayout.SOUTH);
     }
 
     /**
@@ -92,10 +87,10 @@ class KassenView
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BorderLayout());
 
-        datumAuswaehlPanel
-            .setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        vorstellungAuswaehlPanel
-            .setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        datumAuswaehlPanel.setBorder(BorderFactory
+                .createEmptyBorder(5, 5, 5, 5));
+        vorstellungAuswaehlPanel.setBorder(BorderFactory.createEmptyBorder(5,
+                5, 5, 5));
 
         leftPanel.add(datumAuswaehlPanel, BorderLayout.NORTH);
         leftPanel.add(vorstellungAuswaehlPanel, BorderLayout.CENTER);
@@ -111,8 +106,7 @@ class KassenView
         JPanel topPanel = new JPanel();
         JLabel label = new JLabel(TITEL, SwingConstants.CENTER);
 
-        Font font = label.getFont()
-            .deriveFont(Font.BOLD + Font.ITALIC, 20);
+        Font font = label.getFont().deriveFont(Font.BOLD + Font.ITALIC, 20);
         label.setFont(font);
         label.setForeground(Color.blue);
 

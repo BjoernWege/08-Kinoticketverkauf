@@ -1,5 +1,10 @@
 package de.uni_hamburg.informatik.swt.se2.kino.ui.platzverkauf;
 
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+
+import de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte.Platz;
+
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -10,11 +15,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-
-import de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte.Platz;
 
 /**
  * Widget, das die Plätze in einem Kinosaal grafisch darstellt und es
@@ -176,10 +176,9 @@ class JPlatzplan extends JComponent
      */
     private void imGitterEinfuegen(Component component, int gridx, int gridy)
     {
-        add(component,
-                new GridBagConstraints(gridx, gridy, 1, 1, 1.0, 1.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                        new Insets(2, 2, 2, 2), 0, 0));
+        add(component, new GridBagConstraints(gridx, gridy, 1, 1, 1.0, 1.0,
+                GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(
+                        2, 2, 2, 2), 0, 0));
     }
 
     /**
