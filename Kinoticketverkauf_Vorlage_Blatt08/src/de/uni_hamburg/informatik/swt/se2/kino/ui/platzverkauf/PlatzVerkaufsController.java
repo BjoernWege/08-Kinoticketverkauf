@@ -72,7 +72,15 @@ public class PlatzVerkaufsController
      */
     private void fuehreBarzahlungDurch()
     {
-        verkaufePlaetze(_vorstellung);
+        Set<Platz> plaetze = _view.getPlatzplan()
+                .getAusgewaehltePlaetze();
+        Geldbetrag preis = _vorstellung.getPreisFuerPlaetze(plaetze);
+    	BezahlController bezahlController = new BezahlController();
+    	
+    	if (bezahlController.fuehreBezahlungDurch(preis)) {
+    		verkaufePlaetze(_vorstellung);
+    	}
+        
     }
 
     /**
