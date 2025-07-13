@@ -29,6 +29,7 @@ public class BezahlController
     public boolean fuehreBezahlungDurch(Geldbetrag zahlBetrag)
     {
         _zahlBetrag = zahlBetrag;
+        _view.setSumme(_zahlBetrag);
 
         _view._dialog.setVisible(true);
         // der Dialog wird geschlossen
@@ -47,7 +48,7 @@ public class BezahlController
         });
         _view._eingabefeld.addKeyListener(new KeyAdapter()
         {
-            public void keyTyped(KeyEvent e)
+            public void keyReleased(KeyEvent e)
             {
                 aktualisiereAusgabe();
             }
@@ -56,17 +57,28 @@ public class BezahlController
 
     private void aktualisiereAusgabe()
     {
-        /*
         String eingabe = _view._eingabefeld.getText();
-        if (Geldbetrag.istEingabeGueltig(eingabe)) {
-        	Geldbetrag bezahlt = Geldbetrag.fromString(eingabe);
-        	if (true) {
-        		_view._ausgabeLabel.setText("");
-        	}
-        } else {
-        	_view._ausgabeLabel.setText("");
-        }
-        */
-    }
 
+        if (Geldbetrag.istEingabeGueltig(eingabe))
+        {
+            Geldbetrag eingabeBetrag = Geldbetrag.fromString(eingabe);
+            if (eingabeBetrag.compareTo(_zahlBetrag) >= 0) // eingabeBetrag ausreichend
+            {
+                _view._OKButton.setEnabled(true);
+                _view._ausgabeLabel.setText(
+                        "Rückgabe: " + eingabeBetrag.subtrahiere(_zahlBetrag)
+                            .toString());
+            }
+            else // eingabeBetrag zu gering
+            {
+                _view._OKButton.setEnabled(false);
+                _view._ausgabeLabel.setText("Eingabe zu gering");
+            }
+        }
+        else
+        {
+            _view._OKButton.setEnabled(false);
+            _view._ausgabeLabel.setText("Ungültiges Eingabeformat");
+        }
+    }
 }

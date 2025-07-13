@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte.Geldbetrag;
+
 public class BezahlView
 {
     public final JDialog _dialog;
@@ -31,6 +33,7 @@ public class BezahlView
         _buttonPanel = new JPanel();
 
         _OKButton = new JButton("OK");
+        _OKButton.setEnabled(false);
         _abbrechenButton = new JButton("Abbrechen");
 
         dialogStrukturieren();
@@ -40,6 +43,7 @@ public class BezahlView
     public void dialogStrukturieren()
     {
         GridLayout einzelSpalte = new GridLayout(4, 1);
+        _dialog.setSize(200, 200);
         _dialog.setLayout(einzelSpalte);
         _dialog.add(_summeLabel);
         _dialog.add(_eingabefeld);
@@ -54,4 +58,13 @@ public class BezahlView
         _buttonPanel.add(_abbrechenButton);
     }
 
+    public void setSumme(Geldbetrag betrag)
+    {
+        _summeLabel.setText("Gesammtpreis: " + betrag.toString());
+    }
+
+    public void setSumme(String value) // Zu testzwecken
+    {
+        _summeLabel.setText(value);
+    }
 }
