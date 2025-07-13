@@ -3,7 +3,7 @@ package de.uni_hamburg.informatik.swt.se2.kino.model.wertobjekte;
 /**
  * 
  */
-public record Geldbetrag(int _eurocent)
+public record Geldbetrag(int _eurocent) implements Comparable<Geldbetrag>
 {
     /**
      * Erstellt ein Geldbetrag von einem int
@@ -144,6 +144,12 @@ public record Geldbetrag(int _eurocent)
         }
         String euro = String.valueOf(this._eurocent / 100);
         return euro + "," + cent;
+    }
+
+    @Override
+    public int compareTo(Geldbetrag geldbetrag)
+    {
+        return Integer.compare(this._eurocent, geldbetrag._eurocent);
     }
 
 }
