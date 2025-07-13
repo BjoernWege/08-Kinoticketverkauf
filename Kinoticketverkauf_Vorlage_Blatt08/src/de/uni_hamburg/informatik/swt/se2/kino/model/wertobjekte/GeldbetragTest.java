@@ -100,6 +100,10 @@ public class GeldbetragTest
         assertTrue(g1.compareTo(g2) == -1);
         assertTrue(g2.compareTo(g1) == 1);
         assertTrue(g2.compareTo(g3) == 0);
-    }
 
+        assertFalse(g1.compareTo(g2) == 1);
+        assertFalse(g1.compareTo(g2) == 0);
+        assertFalse(g2.compareTo(g3) == 1);
+        assertFalse(g2.compareTo(g3) == -1);
+    }
 }

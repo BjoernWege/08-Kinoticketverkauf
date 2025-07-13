@@ -32,7 +32,7 @@ public class BezahlController
         _view.setSumme(_zahlBetrag);
 
         _view._dialog.setVisible(true);
-        // der Dialog wird geschlossen
+        // Stoppt hier bis der Dialog geschlossen wird
         return _wurdeBestaetigt;
     }
 
@@ -48,6 +48,7 @@ public class BezahlController
         });
         _view._eingabefeld.addKeyListener(new KeyAdapter()
         {
+            @Override
             public void keyReleased(KeyEvent e)
             {
                 aktualisiereAusgabe();

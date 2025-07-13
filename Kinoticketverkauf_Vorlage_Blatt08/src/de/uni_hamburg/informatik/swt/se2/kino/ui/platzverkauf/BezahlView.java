@@ -43,7 +43,7 @@ public class BezahlView
     public void dialogStrukturieren()
     {
         GridLayout einzelSpalte = new GridLayout(4, 1);
-        _dialog.setSize(200, 200);
+        _dialog.setSize(200, 200); // ggf dynamisch?
         _dialog.setLayout(einzelSpalte);
         _dialog.add(_summeLabel);
         _dialog.add(_eingabefeld);
@@ -61,10 +61,5 @@ public class BezahlView
     public void setSumme(Geldbetrag betrag)
     {
         _summeLabel.setText("Gesammtpreis: " + betrag.toString());
-    }
-
-    public void setSumme(String value) // Zu testzwecken
-    {
-        _summeLabel.setText(value);
     }
 }

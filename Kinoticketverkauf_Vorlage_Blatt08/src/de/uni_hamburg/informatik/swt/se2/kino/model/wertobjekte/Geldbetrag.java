@@ -146,6 +146,9 @@ public record Geldbetrag(int _eurocent) implements Comparable<Geldbetrag>
         return euro + "," + cent;
     }
 
+    /**
+     * @see
+     */
     @Override
     public int compareTo(Geldbetrag geldbetrag)
     {
