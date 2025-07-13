@@ -24,7 +24,6 @@ public class PlatzVerkaufsController
 {
     // Die aktuelle Vorstellung, deren Plätze angezeigt werden. Kann null sein.
     private Vorstellung _vorstellung;
-
     private PlatzVerkaufsView _view;
 
     /**
@@ -73,14 +72,15 @@ public class PlatzVerkaufsController
     private void fuehreBarzahlungDurch()
     {
         Set<Platz> plaetze = _view.getPlatzplan()
-                .getAusgewaehltePlaetze();
+            .getAusgewaehltePlaetze();
         Geldbetrag preis = _vorstellung.getPreisFuerPlaetze(plaetze);
-    	BezahlController bezahlController = new BezahlController();
-    	
-    	if (bezahlController.fuehreBezahlungDurch(preis)) {
-    		verkaufePlaetze(_vorstellung);
-    	}
-        
+        BezahlController bezahlController = new BezahlController();
+
+        if (bezahlController.fuehreBezahlungDurch(preis))
+        {
+            verkaufePlaetze(_vorstellung);
+        }
+
     }
 
     /**
