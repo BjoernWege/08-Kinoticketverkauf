@@ -90,4 +90,20 @@ public class GeldbetragTest
         assertEquals("2,15", g3.toString());
     }
 
+    @Test
+    public void testComparable()
+    {
+        Geldbetrag g1 = Geldbetrag.fromInt(100);
+        Geldbetrag g2 = Geldbetrag.fromInt(200);
+        Geldbetrag g3 = Geldbetrag.fromString("2,00");
+
+        assertTrue(g1.compareTo(g2) == -1);
+        assertTrue(g2.compareTo(g1) == 1);
+        assertTrue(g2.compareTo(g3) == 0);
+
+        assertFalse(g1.compareTo(g2) == 1);
+        assertFalse(g1.compareTo(g2) == 0);
+        assertFalse(g2.compareTo(g3) == 1);
+        assertFalse(g2.compareTo(g3) == -1);
+    }
 }
