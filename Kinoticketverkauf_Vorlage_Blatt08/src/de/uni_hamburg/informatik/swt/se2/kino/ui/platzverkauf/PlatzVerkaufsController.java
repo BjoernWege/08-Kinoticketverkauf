@@ -75,9 +75,9 @@ public class PlatzVerkaufsController
             .getAusgewaehltePlaetze();
         Geldbetrag preis = _vorstellung.getPreisFuerPlaetze(plaetze);
         BezahlController bezahlController = new BezahlController();
-
         if (bezahlController.fuehreBezahlungDurch(preis))
         {
+            // stopt hier
             verkaufePlaetze(_vorstellung);
         }
 

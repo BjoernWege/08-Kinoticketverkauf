@@ -42,7 +42,7 @@ public class Vorstellung
      * @require anfangszeit != null
      * @require endzeit != null
      * @require datum != null
-     * @require preis > 0
+     * @require preis != null
      * 
      * @ensure getKinosaal() == kinosaal
      * @ensure getFilm() == film
@@ -59,7 +59,8 @@ public class Vorstellung
         assert anfangszeit != null : "Vorbedingung verletzt: anfangszeit != null";
         assert endzeit != null : "Vorbedingung verletzt: endzeit != null";
         assert datum != null : "Vorbedingung verletzt: datum != null";
-
+        assert preis != null : "Vorbedingung verletzt: preis != null";
+        
         _kinosaal = kinosaal;
         _film = film;
         _anfangszeit = anfangszeit;
