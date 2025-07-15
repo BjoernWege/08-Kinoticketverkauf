@@ -10,7 +10,11 @@ public class BezahlController
     private BezahlView _view;
     private Geldbetrag _zahlBetrag;
     private boolean _wurdeBestaetigt;
-
+    
+    /**
+     * Bereitet einen Controller für einen Dialog vor.
+     * Es wird erwartet, dass für jeden Dialog ein neuer Controller hergestellt und dann weggeschmissen wird.
+     */
     public BezahlController()
     {
         _view = new BezahlView();
@@ -24,10 +28,12 @@ public class BezahlController
      *  Blockiert durch den JDialog zur Rückgeldberechnung andere Eingaben,
      *  bis er geschlossen wird.
      * @param geld Der zu zahlende Preis.
+     * @require zahlBetrag != null
      * @return Ob OK gedrückt, oder der Dialog anders verlassen wurde.
      */
     public boolean fuehreBezahlungDurch(Geldbetrag zahlBetrag)
     {
+    	assert zahlBetrag != null : "Vorbedingung verletzt: zahlBetrag != null";
         _zahlBetrag = zahlBetrag;
         _view.setSumme(_zahlBetrag);
 
@@ -36,6 +42,9 @@ public class BezahlController
         return _wurdeBestaetigt;
     }
 
+	/**
+	* 
+	*/
     private void registriereUIAktionen()
     {
         _view._OKButton.addActionListener(e -> {
@@ -56,6 +65,10 @@ public class BezahlController
         });
     }
 
+	/**
+	* Überprüft nach eine Tastatureingabe, ob der eingegebene Wert (String) zu einem Geldbetrag
+	* umgewandelt und mit ihm gerechnet werden kann.
+	*/
     private void aktualisiereAusgabe()
     {
         String eingabe = _view._eingabefeld.getText();

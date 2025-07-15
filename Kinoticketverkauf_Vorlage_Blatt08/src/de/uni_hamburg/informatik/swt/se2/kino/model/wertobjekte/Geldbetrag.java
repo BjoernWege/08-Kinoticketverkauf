@@ -31,9 +31,9 @@ public record Geldbetrag(int _eurocent) implements Comparable<Geldbetrag>
         if (eurocent.contains(","))
         {
             eurocent = eurocent.replace(",", "");
-            return new Geldbetrag(Integer.valueOf(eurocent));
+            return Geldbetrag.fromInt(Integer.valueOf(eurocent));
         }
-        return new Geldbetrag(Integer.valueOf(eurocent) * 100);
+        return Geldbetrag.fromInt(Integer.valueOf(eurocent) * 100);
     }
 
     /**
@@ -57,8 +57,10 @@ public record Geldbetrag(int _eurocent) implements Comparable<Geldbetrag>
      * @return
      */
     public static boolean istEingabeGueltig(String eurocent)
-    {
-        return eurocent.matches("[0-9]+(,[0-9]{2})?");
+    { 
+        // erlaubt :   9 999 999,99
+        // verboten : 21 474 836,47
+    	return eurocent.matches("[0-9]{1,7}(,[0-9]{2})?");
     }
 
     /**
@@ -154,5 +156,4 @@ public record Geldbetrag(int _eurocent) implements Comparable<Geldbetrag>
     {
         return Integer.compare(this._eurocent, geldbetrag._eurocent);
     }
-
 }
