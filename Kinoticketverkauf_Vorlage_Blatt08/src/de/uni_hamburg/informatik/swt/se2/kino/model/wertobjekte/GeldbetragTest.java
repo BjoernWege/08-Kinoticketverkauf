@@ -24,7 +24,7 @@ public class GeldbetragTest
     public void testGeldbetragFromString()
     {
         // gueltig:   20,05 ; 20 ; 2,15 ; 020 ; 
-        // ungueltig: 20,5 ; "" ; 20, ; ,05 ; "," ; "a"
+        // ungueltig: 20,5  ; "" ; 20,  ; ,05 ; "," ; "a"
 
         Geldbetrag g1 = Geldbetrag.fromString("20,05");
         Geldbetrag g2 = Geldbetrag.fromString("20");
@@ -40,6 +40,9 @@ public class GeldbetragTest
         assertFalse(Geldbetrag.istEingabeGueltig("20,"));
         assertFalse(Geldbetrag.istEingabeGueltig(",05"));
         assertFalse(Geldbetrag.istEingabeGueltig("20,5"));
+       
+        assertFalse(Geldbetrag.istEingabeGueltig("21474836,47"));
+        assertFalse(Geldbetrag.istEingabeGueltig("21474836"));
     }
 
     @Test
